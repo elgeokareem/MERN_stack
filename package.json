@@ -1,0 +1,33 @@
+{
+  "name": "breakingbad",
+  "version": "1.0.0",
+  "description": "Proyecto siguiendo tutorial de brad traversy https://www.youtube.com/watch?v=YaioUnMw0mo&t=724s",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack --mode development --watch",
+    "dev": "nodemon src/backend/index.js"
+  },
+  "author": "William Vegas",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@svgr/webpack": "^5.4.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "style-loader": "^1.2.1",
+    "svg-url-loader": "^6.0.0",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

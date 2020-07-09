@@ -1,0 +1,109 @@
+1- npm init
+
+2- se instala: express, react -D, react-dom -D, axios,
+              webpack -D webpack-cli -D
+
+              npm i --save-dev @babel/core
+              npm i babel-loader
+              npm i @babel/preset-react -D
+              npm i @babel/preset-env -D
+
+3- Se crea el archivo ".babelrc"
+
+    {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ]
+    }
+
+4- Se crea archivo "webpack.config.js"
+
+module.exports = {
+        entry: "./src/frontend/index_react.js",
+        output: {
+            path: __dirname + "/src/public",
+            filename: "bundle.js"
+        },
+
+        //Paso 6
+        module: {
+            rules: [
+                {
+                    use:"babel-loader",
+                    test: /\.js$/,
+                    exclude: /node_modules/
+                }
+            ]
+        }
+    };
+
+4- Poner los siguientes scripts en package.json
+    "webpack": "webpack --mode development --watch",
+    "dev": "nodemon src/backend/index.js"
+
+5- Para cargar los css:
+    npm install --save-dev css-loader
+    npm install --save-dev style-loader
+
+    Despues se nodifica el WEBPACK.CONFIG
+
+    module.exports = {
+    module: {
+        rules: [
+        {
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+        },
+        ],
+    },
+    };
+
+
+6- Para usar url en css
+    npm install url-loader
+    npm install file-loader --save-dev
+
+    se le añade a las reglas:
+          {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+
+7- Para cargar SVG
+    npm i svg-url-loader --save-dev
+
+    {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },}
+
+      Ejemplo de uso:
+        import reactSVG from "../../backend/public/img/react.svg"
+        <img src={reactSVG} alt="ayy lmao" />
+
+    
+    
+    Si se quiere importar COMO COMPONENTE HACER:
+
+    npm install @svgr/webpack --save-dev   Y actualizar
+    {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    },
+
+    
